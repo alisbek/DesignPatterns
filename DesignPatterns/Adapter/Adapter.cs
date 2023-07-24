@@ -1,7 +1,8 @@
-﻿class Adapter : Adaptee, ITarget
+﻿class Adapter : ITarget
 {
+    Adaptee adaptee = new Adaptee();
     public string GetRequest()
     {
-       return this.GetSpecificRequest();
+       return adaptee.GetSpecificRequest();
     }
 }
