@@ -1,15 +1,7 @@
-﻿class Adapter : ITarget
+﻿class Adapter : Adaptee, ITarget
 {
-    private readonly Adaptee _adaptee;
-
-    public Adapter(Adaptee adaptee)
-    {
-        _adaptee = adaptee;
-    }
-
-
     public string GetRequest()
     {
-        return $"This is '{_adaptee.GetSpecificRequest()}'";
+       return this.GetSpecificRequest();
     }
 }
