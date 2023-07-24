@@ -1,38 +1,17 @@
-﻿class Context
+﻿class Program
 {
-    private IStrategy _strategy;
-
-    public Context()
+    static void Main(string[] args)
     {
-            
-    }
+        var context = new Context();
 
-    public Context(IStrategy strategy)
-    {
-        this._strategy = strategy;
-    }
+        Console.WriteLine("Client: Strategy is set to normal sorting.");
+        context.SetStrategy(new ConcreteStrategyA());
+        context.SomeBusinessLogic();
 
-    public void SetStrategy(IStrategy strategy)
-    {
-        this._strategy = strategy;
-    }
+        Console.WriteLine();
 
-    public void SomeBusinessLogic()
-    {
-        System.Console.WriteLine("Context: Sorting data using the strategy (not sure how it'll do it)");
-        var result = this._strategy.DoAlgorythm(new List<string> { "a", "b", "c", "d", "e" });
-    }
-}
-
-public interface IStrategy
-{
-    object DoAlgorythm(object data);
-}
-
-class Program
-{
-    static void Main(string args[])
-    {
-
+        Console.WriteLine("Client: Strategy is set to reverse sorting.");
+        context.SetStrategy(new ConcreteStrategyB());
+        context.SomeBusinessLogic();
     }
 }
